@@ -1,0 +1,23 @@
+application:
+  yml:
+server:
+  port: 5001
+
+spring:
+  rabbitmq:
+    host: 192.168.200.130
+    username: admin
+    password: 123456
+    virtual-host: myVH
+  cloud:
+    stream:
+      binders: #???????????
+        myRabbitMQ:
+          type: rabbit
+      bindings: #????????????????
+        output: #??????
+          destination: exchange01
+          binder: myRabbitMQ
+        userOutput: #??????
+          destination: exchange02
+          binder: myRabbitMQ
